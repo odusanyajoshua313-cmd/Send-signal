@@ -1,0 +1,8 @@
+.logoText {
+  font-size: var(--sys-font-title-title-large-font-size);
+  font-family: var(--sys-font-title-title-large-font-family);
+  font-weight: var(--sys-font-title-title-large-font-weight);
+  letter-spacing: var(--sys-font-title-title-large-letter-spacing);
+  line-height: var(--sys-font-title-title-large-line-height);
+  color: var(--sys-primitive-color-collection-color-pallet-neutral-variant-neutral-variant-10);
+}
