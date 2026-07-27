@@ -1,6 +1,7 @@
 "use server";
 
 import { createClient } from "@/lib/supabase/server";
+import prisma from "@/lib/prisma";
 
 export async function signUp(formData: FormData) {
   const companyName = formData.get("companyName") as string;
@@ -29,6 +30,23 @@ export async function signUp(formData: FormData) {
     if (error) {
       console.error("Supabase sign-up error:", error);
       return { error: error.message };
+    }
+
+    if (data.user) {
+      try {
+        await prisma.user.upsert({
+          where: { id: data.user.id },
+          update: { email: data.user.email! },
+          create: {
+            id: data.user.id,
+            email: data.user.email!,
+            companyName,
+            passwordHash: null,
+          },
+        });
+      } catch (prismaError) {
+        console.error("Error creating user in database:", prismaError);
+      }
     }
 
     const requiresVerification = !data.session;
