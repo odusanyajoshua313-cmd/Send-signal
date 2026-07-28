@@ -25,27 +25,28 @@ export const Logo: React.FC<LogoProps> = ({
           xmlns="http://www.w3.org/2000/svg"
           className="w-[65%] h-[65%]"
         >
-          {/* Signal Pulse Design - Consistent with Tone & Speed tokens */}
-          <circle cx="6" cy="20" r="4" fill="white" />
+          {/* Signal Pulse Design - Wave Animation */}
+          <circle cx="6" cy="20" r="4" fill="white" className={styles.signalDot} />
           <path
             d="M14 12C16.6667 14.6667 18 17.3333 18 20C18 22.6667 16.6667 25.3333 14 28"
             stroke="white"
             strokeWidth="3.5"
             strokeLinecap="round"
+            className={styles.wave1}
           />
           <path
             d="M22 8C26 12 28 16 28 20C28 24 26 28 22 32"
             stroke="white"
             strokeWidth="3.5"
             strokeLinecap="round"
-            opacity="0.7"
+            className={styles.wave2}
           />
           <path
             d="M30 4C36 10 38 15 38 20C38 25 36 30 30 36"
             stroke="white"
             strokeWidth="3.5"
             strokeLinecap="round"
-            opacity="0.4"
+            className={styles.wave3}
           />
         </svg>
       </div>
