@@ -10,13 +10,11 @@
     "postinstall": "prisma generate"
   },
   "dependencies": {
-    "@prisma/adapter-better-sqlite3": "^7.5.0",
     "@prisma/adapter-pg": "^7.9.1",
     "@prisma/client": "^7.5.0",
     "@supabase/ssr": "^0.10.3",
     "@supabase/supabase-js": "^2.106.2",
     "bcryptjs": "^3.0.3",
-    "better-sqlite3": "^12.8.0",
     "canvas-confetti": "^1.9.4",
     "cookie": "^1.1.1",
     "jsonwebtoken": "^9.0.3",
