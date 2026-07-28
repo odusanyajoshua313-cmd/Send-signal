@@ -8,16 +8,17 @@ export async function proxy(request: NextRequest) {
     },
   })
 
-  const hasEnvVars = process.env.NEXT_PUBLIC_SUPABASE_URL && process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
+  const url = process.env.NEXT_PUBLIC_SUPABASE_URL?.trim() || ''
+  const key = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY?.trim() || ''
 
-  if (!hasEnvVars) {
-    // If keys are missing, bypass checks by return response directly
+  if (!url || !key || !url.startsWith('http')) {
+    // If keys are missing or invalid, bypass checks by returning response directly
     return response
   }
 
   const supabase = createServerClient(
-    process.env.NEXT_PUBLIC_SUPABASE_URL!,
-    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
+    url,
+    key,
     {
       cookies: {
         getAll() {
