@@ -3,7 +3,13 @@ import { Pool } from 'pg'
 import { PrismaPg } from '@prisma/adapter-pg'
 
 const prismaClientSingleton = () => {
-  const connectionString = `${process.env.DATABASE_URL}`
+  const connectionString = process.env.DATABASE_URL || ''
+  
+  if (!connectionString) {
+    console.warn('DATABASE_URL is not set. Prisma will not be able to connect.')
+    return new PrismaClient()
+  }
+
   const pool = new Pool({ connectionString })
   const adapter = new PrismaPg(pool)
   return new PrismaClient({ adapter })
